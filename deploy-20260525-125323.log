@@ -1,0 +1,40 @@
+[2026-05-25 12:53:23] === Starting deployment (log: /home/nigsmith/GIT/observabilityHackathon/deploy-20260525-125323.log) ===
+[2026-05-25 12:53:23] --- Phase 1: Install MCG Standalone ---
+[2026-05-25 12:53:23] Waiting for subscription 'mcg-operator' in 'openshift-storage' (timeout: 900s)...
+[2026-05-25 12:53:24]   Waiting for installedCSV... (0s elapsed)
+[2026-05-25 12:54:25]   'mcg-operator' ready (CSV: mcg-operator.v4.21.4-rhodf)
+[2026-05-25 12:54:26] Running: 01_Install_Odf/03_postInstall.sh
+[2026-05-25 12:55:58] --- Phase 2: Install Operators ---
+[2026-05-25 12:56:00] Waiting for subscription 'coo-operator' in 'openshift-operators' (timeout: 600s)...
+[2026-05-25 12:56:00]   Waiting for installedCSV... (0s elapsed)
+[2026-05-25 12:57:02]   'coo-operator' ready (CSV: cluster-observability-operator.v1.4.0)
+[2026-05-25 12:57:02] Waiting for subscription 'loki-operator' in 'openshift-operators-redhat' (timeout: 600s)...
+[2026-05-25 12:57:03]   'loki-operator' ready (CSV: loki-operator.v6.5.1)
+[2026-05-25 12:57:03] Waiting for subscription 'logging-operator' in 'openshift-logging' (timeout: 600s)...
+[2026-05-25 12:57:04]   'logging-operator' ready (CSV: cluster-logging.v6.5.1)
+[2026-05-25 12:57:04] Waiting for subscription 'otel-operator' in 'openshift-operators' (timeout: 600s)...
+[2026-05-25 12:57:05]   CSV 'opentelemetry-operator.v0.144.0-3' phase: Installing (0s elapsed)
+[2026-05-25 12:58:06]   CSV 'opentelemetry-operator.v0.144.0-3' phase: InstallReady (60s elapsed)
+[2026-05-25 12:59:07]   'otel-operator' ready (CSV: opentelemetry-operator.v0.144.0-3)
+[2026-05-25 12:59:07] Waiting for subscription 'tempo-operator' in 'openshift-operators' (timeout: 600s)...
+[2026-05-25 12:59:08]   CSV 'tempo-operator.v0.20.0-3' phase: Installing (0s elapsed)
+[2026-05-25 13:00:10]   CSV 'tempo-operator.v0.20.0-3' phase: Installing (60s elapsed)
+[2026-05-25 13:01:11]   CSV 'tempo-operator.v0.20.0-3' phase: Installing (120s elapsed)
+[2026-05-25 13:02:12]   CSV 'tempo-operator.v0.20.0-3' phase: Installing (180s elapsed)
+[2026-05-25 13:03:13]   'tempo-operator' ready (CSV: tempo-operator.v0.20.0-3)
+[2026-05-25 13:03:13] Waiting for subscription 'netobserv-operator' in 'openshift-netobserv-operator' (timeout: 600s)...
+[2026-05-25 13:03:14]   'netobserv-operator' ready (CSV: network-observability-operator.v1.11.2)
+[2026-05-25 13:03:14] --- Phase 3: Configure Logging ---
+[2026-05-25 13:03:14] Running: 03_Logging/01_commands.sh
+[2026-05-25 13:03:19] Running: 03_Logging/03_bucketsecret.sh
+[2026-05-25 13:03:23] --- Phase 4: Configure OpenTelemetry ---
+[2026-05-25 13:03:25] --- Phase 5: Configure Tempo ---
+[2026-05-25 13:03:25] Running: 05_Tempo/02_bucketsecret.sh
+[2026-05-25 13:03:30] --- Phase 6: Configure User Workload Monitoring ---
+[2026-05-25 13:03:31] --- Phase 7: Configure Perses ---
+[2026-05-25 13:03:31] --- Phase 8: Configure Troubleshooting ---
+[2026-05-25 13:03:32] --- Phase 9: Deploy ns1-uwl app ---
+[2026-05-25 13:03:33] --- Phase 10: Deploy ns2-uwl frontend/backend ---
+[2026-05-25 13:03:35] --- Phase 11: Deploy netobserv ---
+[2026-05-25 13:03:36] Running: 11_NetObserv/03_bucketsecret.sh
+[2026-05-25 13:03:40] === Deployment complete ===

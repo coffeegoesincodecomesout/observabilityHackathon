@@ -21,3 +21,14 @@ Run the Deploy script:
 ```
 ./00_Deploy.sh
 ```
+
+## Testing
+
+After deployment, use the test scripts in the `Testing/` directory to verify everything is working:
+
+```bash
+cd Testing
+./test-observability.sh  # Complete E2E test suite
+```
+
+See [Testing/README.md](Testing/README.md) for details.
